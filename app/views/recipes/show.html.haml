@@ -6,6 +6,9 @@
 			#recipe_info
 				%h1= @recipe.title
 				%p.description= @recipe.desc
+				%p
+					Submitted by
+					= @recipe.user.email
 	.row
 		.col-md-6
 			#ingredients
@@ -20,6 +23,8 @@
 				%ul
 					- @recipe.directions.each do |direction|
 						%li= direction.step
+
+- if user_signed_in?
 	.row
 		.col-md-12
 			= link_to "Back", root_path, class: "btn btn-default"
